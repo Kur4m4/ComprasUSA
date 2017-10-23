@@ -54,7 +54,10 @@ class TotalCompraViewController: UIViewController {
             totalDolar += product.price
             
             precoConvertido = product.price * cotacaoDolar
-            impostos = precoConvertido * (product.state!.imposto + iof) / 100
+            impostos = precoConvertido * product.state!.imposto / 100
+            if product.card {
+                impostos += precoConvertido * iof / 100
+            }
             totalReal += precoConvertido + impostos
         }
         
